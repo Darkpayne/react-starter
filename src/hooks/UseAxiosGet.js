@@ -7,26 +7,25 @@ const useAxiosGet = (url) => {
     const [isLoading, setIsLoading] = useState(true)
     const [response, setResponse] = useState(null)
     const [error, setError] = useState("")
-
+    const fetchData = async () => {
+        try {
+            const res = await axios.get(url,
+                {
+                headers: {
+                'Authorization': auth ? `Bearer ${auth}` : undefined,
+                    },
+                }
+            );
+            setResponse(res.data)
+        } catch (error) {
+            console.log(error?.message);
+            setError(error);               
+        } finally{
+            setIsLoading(false);
+        }
+    }
     useEffect(() => {
         setTimeout(() => {
-            const fetchData = async () => {
-                try {
-                    const res = await axios.get(url,
-                        {
-                        headers: {
-                        'Authorization': auth ? `Bearer ${auth}` : undefined,
-                            },
-                        }
-                    );
-                    setResponse(res.data)
-                } catch (error) {
-                    console.log(error?.message);
-                    setError(error);               
-                } finally{
-                    setIsLoading(false);
-                }
-            }
             fetchData();
         }, 1000);
     }, [url])
