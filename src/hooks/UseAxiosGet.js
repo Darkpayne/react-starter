@@ -31,7 +31,7 @@ const useAxiosGet = (url) => {
         }, 1000);
     }, [url])
 
-  return {isLoading, response, error}
+  return {isLoading, response, error, fetchData}
 }
 
 export default useAxiosGet
