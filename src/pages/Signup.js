@@ -3,15 +3,25 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { basicSchema } from "../validation/YupValidation";
 import { useToastify, Notification } from "../app/notification";
+import { useDispatch,useSelector } from "react-redux";
+import { setAuth,setToken } from "../store/slices/authSlice";
 
 const Signup = () => {
   const { createToast } = useToastify();
+  const dispatch = useDispatch();
+  const auth = useSelector((state)=>state.auth);
+  console.log(auth);
+
   const onSubmit = (values, actions) => {
-    createToast({ msg: "success", dataType: true });
-    console.log(actions);
-    actions.resetForm();
-    alert(JSON.stringify(values, null, 2));
+
+    createToast({ msg: "Registered SuccessFully", dataType: true });
+
+    dispatch(setAuth(JSON.stringify(values)));
+    dispatch(setToken('hbgvdscuiavbleubscalaefebluicecfe'));
+    // actions.resetForm();
+    // alert(JSON.stringify(values, null, 2));
   };
+
   const { handleBlur, handleChange, handleSubmit, values, touched, errors } =
     useFormik({
       initialValues: {
@@ -25,8 +35,8 @@ const Signup = () => {
     });
 
   return (
-    <div className="mx-auto container flex justify-center items-center font-mono">
-      <div className="bg-white px-10 py-5 my-10 flex max-w-md flex-col w-full shadow-xl rounded-xl">
+    <div className="mx-auto min-h-screen container flex justify-center items-center font-mono">
+      <div className="bg-white px-10 py-5 my-10 flex max-w-lg flex-col w-full shadow-xl rounded-xl">
         <h2 className="text-2xl font-bold text-gray-800 text-center ">
           Sign Up
         </h2>

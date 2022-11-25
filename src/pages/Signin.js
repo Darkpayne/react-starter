@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 
 const Signin = () => {
   return (
-    <div className="mx-auto h-screen container flex justify-center items-center">
+    <div className="mx-auto h-screen container flex justify-center items-center font-mono">
       <div className="bg-white p-10 flex max-w-lg flex-col w-full shadow-xl rounded-xl">
         <h2 className="text-2xl font-bold text-gray-800 text-left mb-5">
           Sign In
         </h2>
         <form action="" className="">
           <div id="input" className="flex flex-col w-full my-5">
-            <label for="username" className="text-gray-500 mb-2">
+            <label htmlFor="username" className="text-gray-500 mb-2">
               Username
             </label>
             <input
@@ -21,7 +21,7 @@ const Signin = () => {
             />
           </div>
           <div id="input" className="flex flex-col w-full my-5">
-            <label for="password" className="text-gray-500 mb-2">
+            <label htmlFor="password" className="text-gray-500 mb-2">
               Password
             </label>
             <input
@@ -46,9 +46,9 @@ const Signin = () => {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
                     ></path>
                   </svg>
