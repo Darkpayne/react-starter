@@ -1,8 +1,4 @@
-import {
-  BrowserRouter,
-  Route,
-  Routes,  
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Nav from "./component/Nav";
 import About from "./pages/About";
 import AppLayout from "./pages/AppLayout";
@@ -15,12 +11,12 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* without the navbar */}
-        <Route path="/about" element={ <About/>} />
-        <Route path="/signin" element={ <Signin/>} />
-        <Route path="/signup" element={ <Signup/>} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
         {/* with the navbar */}
-        <Route element={ <AppLayout/> } >
-          <Route path="/" element={ <Home/>} />
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
         </Route>
       </Routes>
     </BrowserRouter>

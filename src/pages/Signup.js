@@ -24,11 +24,10 @@ const Signup = () => {
       onSubmit,
     });
 
-  console.log(errors);
   return (
-    <div className="mx-auto container flex justify-center items-center">
+    <div className="mx-auto container flex justify-center items-center font-mono">
       <div className="bg-white px-10 py-5 my-10 flex max-w-md flex-col w-full shadow-xl rounded-xl">
-        <h2 className="text-2xl font-bold text-gray-800 text-left mb-5">
+        <h2 className="text-2xl font-bold text-gray-800 text-center ">
           Sign Up
         </h2>
         <form onSubmit={handleSubmit}>
