@@ -3,21 +3,20 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { basicSchema } from "../validation/YupValidation";
 import { useToastify, Notification } from "../app/notification";
-import { useDispatch,useSelector } from "react-redux";
-import { setAuth,setToken } from "../store/slices/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setAuth, setToken } from "../store/slices/authSlice";
 
 const Signup = () => {
   const { createToast } = useToastify();
   const dispatch = useDispatch();
-  const auth = useSelector((state)=>state.auth);
+  const auth = useSelector((state) => state.auth);
   console.log(auth);
 
   const onSubmit = (values, actions) => {
-
-    createToast({ msg: "Registered SuccessFully", dataType: true });
+    createToast({ msg: "Registered SuccessFully", dataType: "success" });
 
     dispatch(setAuth(JSON.stringify(values)));
-    dispatch(setToken('hbgvdscuiavbleubscalaefebluicecfe'));
+    dispatch(setToken("this is a token"));
     // actions.resetForm();
     // alert(JSON.stringify(values, null, 2));
   };

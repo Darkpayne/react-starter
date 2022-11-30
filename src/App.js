@@ -14,9 +14,17 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
         {/* with the navbar */}
-        <Route element={<AppLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+        {/* <Route element={<AppLayout />}>
+          <Route path="/" element={} />
+        </Route> */}
+
+        <Route path="user">
+          <Route element={<AppLayout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="{id}" element={<>specific id</>} />
+          </Route>
+          <Route path="Modal" element={<>Modal</>} />
         </Route>
       </Routes>
     </BrowserRouter>
