@@ -3,14 +3,19 @@ import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { basicSchema } from "../validation/YupValidation";
 import { useToastify, Notification } from "../app/notification";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../store/slices/authSlice";
 
 const Signup = () => {
+  const dispatch = useDispatch();
+
   const { createToast } = useToastify();
   const onSubmit = (values, actions) => {
     createToast({ msg: "success", dataType: true });
     console.log(actions);
-    actions.resetForm();
-    alert(JSON.stringify(values, null, 2));
+    dispatch(setAuth(actions));
+    // actions.resetForm();
+    // alert(JSON.stringify(values, null, 2));
   };
   const { handleBlur, handleChange, handleSubmit, values, touched, errors } =
     useFormik({
