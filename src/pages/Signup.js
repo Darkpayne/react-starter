@@ -4,20 +4,36 @@ import { useFormik } from "formik";
 import { basicSchema } from "../validation/YupValidation";
 import { useToastify, Notification } from "../app/notification";
 import { useDispatch, useSelector } from "react-redux";
-import { setAuth, setToken } from "../store/slices/authSlice";
+import {
+  getAuth,
+  getData,
+  getToken,
+  setAuth,
+  setData,
+  setToken,
+} from "../store/slices/authSlice";
 
 const Signup = () => {
   const dispatch = useDispatch();
 
+  const user = useSelector(getAuth);
+  const token = useSelector(getToken);
+  const data = useSelector(getData);
+
   const { createToast } = useToastify();
 
   const onSubmit = (values, actions) => {
-    createToast({ msg: "Registered SuccessFully", dataType: "success" });
+    createToast({ msg: "Registered SuccessFully", dataType: "info" }); // error info success
     dispatch(setAuth(JSON.stringify(values)));
     dispatch(setToken("this is a token"));
+    dispatch(setData(JSON.stringify(values)));
+
     // actions.resetForm();
     // alert(JSON.stringify(values, null, 2));
   };
+  console.log("auth :" + user);
+  console.log("token :" + token);
+  console.log("data :" + data);
 
   const { handleBlur, handleChange, handleSubmit, values, touched, errors } =
     useFormik({

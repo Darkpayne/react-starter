@@ -13,6 +13,7 @@ function getLocalStorageItem(item) {
 const initialState = {
   user: getLocalStorageItem("user"),
   token: getLocalStorageItem("token"),
+  data: {},
 };
 
 const authSlice = createSlice({
@@ -25,8 +26,16 @@ const authSlice = createSlice({
     setToken: (state, action) => {
       state.token = localStorage.setItem("token", action.payload);
     },
+    setData: (state, action) => {
+      state.data = action.payload;
+    },
   },
 });
 
-export const { setAuth, setToken } = authSlice.actions;
+export const { setAuth, setToken, setData } = authSlice.actions;
+
+export const getAuth = (state) => state.auth.user;
+export const getToken = (state) => state.auth.token;
+export const getData = (state) => state.auth.data;
+
 export default authSlice.reducer;
